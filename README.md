@@ -33,25 +33,29 @@ For each question, put your answer in the space provided. It is important every 
 1. In the space below, fill out the blanks to complete a fetch request to get all the dogs out of the database and print the response to the console.
 
 ```javascript
-fetch(_________)
-.then(_________)
+fetch("http://localhost:3000/puppies")
+.then(response => response.json())
 .then(console.log)
 ```
 
 2. In the request above, what does `fetch` return? 
 
 ```
+Fetch returns a promise object.
 ```
 
 3. In the request above, what is `.then`? What does it return?
 
 ```
+`.then` is a function defined on the Promise object. `.then` always returns another promise.
 ```
 
 4. In the space below, provide the fetch request needed to get the dog with the id of 4 and print the response to the console.
 
 ```javascript
-
+fetch("http://localhost:3000/puppies/4")
+.then(response => response.json())
+.then(console.log)
 ```
 
 5. How could you change the code above to print the following sentence to the console?
@@ -59,29 +63,36 @@ fetch(_________)
 >My dog is a {dog's breed} named {dog's name}. They are {dog's age} months old and they are pretty {dog's personality}.
 
 ```javascript
-
+fetch("http://localhost:3000/puppies/4")
+.then(response => response.json())
+.then(puppy => {
+  console.log(`
+    My dog is a ${puppy.breed} named ${puppy.name}. They are ${puppy.ageInMonths} months old and they are pretty ${puppy.personality}.
+  `)
+})
 ```
 
 6. Turns out we got one of the dog's breeds incorrect. Fill in the blanks below to change the breed for the dog with the id of 2 and then print the response to the console.
 
 ```javascript
-fetch("http://localhost:3000/_______", {
-  method: _______,
+fetch("http://localhost:3000/puppies/2", {
+  method: "PATCH",
   headers: {
-    _________: ________,
-    _________: ________
+    'content-type': 'application/json',
+    'accept': 'application/json'
   },
-  body: JSON.stringify(_______)
+  body: JSON.stringify({ breed: 'Golden Retriever' })
 })
-.then(________)
-.then(data => {
-  // your code here
+.then(response => response.json())
+.then(puppy => {
+  console.log(puppy)
 })
 ```
 
 7. What does `JSON.stringify` do in the fetch request above?
 
 ```
+It converts an object into a stringified JSON object.
 ```
 
 8. Fill in the blanks below to add an entirely new dog to our database and then print the resoponse to the console.

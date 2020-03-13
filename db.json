@@ -1,4 +1,4 @@
-{ 
+{
   "puppies": [
     {
       "id": 0,
@@ -20,7 +20,7 @@
       "id": 2,
       "name": "Prince Gerald",
       "ageInMonths": 7,
-      "breed": "German Shepherd",
+      "breed": "Golden Retriever",
       "personality": "Lazy 😴",
       "imageUrl": "assets/images/princeGerald.jpg"
     },
